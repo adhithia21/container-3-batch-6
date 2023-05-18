@@ -1,0 +1,39 @@
+version: "3.8"
+name: aplikasi-keren
+services:
+  aplikasi-keren:
+    build: ./aplikasi-keren
+    networks:
+      - net-app
+    ports:
+      - 8000:8000
+    environment:
+      - DB_CONNECTION_STRING=adhithia:Adhithia#123@tcp(database:3306)/db_keren?charset=utf8mb4&parseTime=True&loc=Local
+  database:
+    image: mariadb:latest
+    networks:
+      - net-app
+    environment:
+      - MARIADB_USER=adhithia
+      - MARIADB_PASSWORD=Adhithia#123
+      - MARIADB_ROOT_PASSWORD=Admin#123
+      - MARIADB_DATABASE=db_keren
+    volumes:
+      - database-data:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:latest
+    networks:
+      - net-app
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=database
+    
+
+networks:
+  net-app: #docker network create aplikasi-keren_net-app
+
+volumes:
+  database-data:
+  vol-1:
+  vol-2:

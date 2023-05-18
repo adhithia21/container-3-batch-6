@@ -1,0 +1,15 @@
+version: "3.8"
+name: latihan-compose
+services:
+  nginx: # docker run -d --name nginx -p 8080:80 nginx:latest
+    image: nginx:latest
+    ports:
+      - 8080:80
+  apache: # docker run -d --name apache -p 9090:80 httpd:alpine
+    image: httpd:alpine
+    ports:
+      - 9090:80
+      
+
+# volumes:
+# networks:
